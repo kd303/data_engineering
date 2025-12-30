@@ -36,8 +36,8 @@ You can use these transforms in your Python DPK scripts.
 
 ### Basic Import
 ```python
-from dpk.vllm_transform import VLLMTransform
-from dpk.sglang_transform import SGLangTransform
+from dpk_extn.vllm_transform import VLLMTransform
+from dpk_extn.sglang_transform import SGLangTransform
 ```
 
 ### Configuration Parameters
@@ -48,7 +48,7 @@ Common parameters for `VLLMTransform` and `SGLangTransform`:
 | :--- | :--- | :--- | :--- |
 | `model` / `model_path` | str | **Required** | HuggingFace model ID or local path. |
 | `tensor_parallel_size` / `tp_size` | int | 1 | Number of GPUs to use per model instance (TP). |
-| `max_replicas` | int | 1 | **Data Parallelism**: Number of concurrent model instances (Actors) to run. |
+| `max_replicas` | int | 1 | **Data Parallelism**: Number of concurrent model instances (Actors) to run. This is where models are small can fit into 1, 2, 4 GPUs, so multiple rayworkers can run |
 | `batch_size` | int | 10000 | **Chunk Size**: Number of rows processed per chunk on Host CPU. |
 | `prompt_template` | str | None | Inline Jinja2 template string. |
 | `prompt_template_path` | str | None | Path to a Jinja2 template file. |
