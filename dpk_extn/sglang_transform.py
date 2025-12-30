@@ -2,7 +2,7 @@ import os
 import ray
 import pyarrow as pa
 from typing import List, Optional, Union, Any, Dict
-from data_prep_toolkit.transforms import AbstractTableTransform
+from data_processing.transform import AbstractTableTransform, TransformConfiguration
 
 try:
     import sglang as sgl
@@ -16,7 +16,7 @@ except ImportError:
     Environment = None
 
 
-class SGLangTransformConfig:
+class SGLangTransformConfig(TransformConfiguration):
     """
     Configuration for SGLangTransform.
     """

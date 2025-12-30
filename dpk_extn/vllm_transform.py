@@ -2,7 +2,7 @@ import os
 import ray
 import pyarrow as pa
 from typing import List, Optional, Union, Any, Dict
-from data_prep_toolkit.transforms import AbstractTableTransform
+from data_processing.transform import AbstractTableTransform, TransformConfiguration
 
 # Try updates for vllm/jinja2 imports
 try:
