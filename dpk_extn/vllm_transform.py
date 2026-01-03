@@ -59,7 +59,6 @@ class VLLMTransformConfig:
         stop: Optional[Union[str, List[str]]] = None,
         stop_token_ids: Optional[List[int]] = None,
         n: int = 1,
-        best_of: Optional[int] = None,
         logprobs: Optional[int] = None,
     ):
         self.model = model
@@ -94,7 +93,6 @@ class VLLMTransformConfig:
         self.stop = stop
         self.stop_token_ids = stop_token_ids
         self.n = n
-        self.best_of = best_of
         self.logprobs = logprobs
 
 
@@ -137,11 +135,6 @@ class _VLLMActor:
         self.llm = LLM(**vllm_args)
         
         self.sampling_params = SamplingParams(
-            n=config.n,
-            best_of=config.best_of,
-            presence_penalty=config.presence_penalty,
-            frequency_penalty=config.frequency_penalty,
-            repetition_penalty=config.repetition_penalty,
             temperature=config.temperature,
             top_p=config.top_p,
             top_k=config.top_k,
